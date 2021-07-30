@@ -2,7 +2,27 @@
 son objetos con las mismas propiedades, en este último caso los valores de las propiedades deben 
 ser comparados con una llamada recursiva de deepEqual.*/
 function deepEqual(a, b) {
-//código
+  //Identificar si los argumentos son de tipo object
+  if (typeof(a) === 'object' && typeof(b)=== 'object'){
+    //Asignarle a las variables las llaves de los parametros
+     let aKey = Object.keys(a);
+     let bKey = Object.keys(b);
+     
+     //Revisar si tienen la misma cantidad de claves
+     if(aKey.length !== bKey.length){
+        return false
+     }
+
+     //Ciclo que recorre las claves si son iguales
+     for(let i = 0; i<aKey.length; i++){
+       if(!deepEqual(aKey[i], bKey[i])){
+         return false
+       }
+      } return true;
+  }else if(a===b)
+      return true
+  else
+    return false;
 }
     
 
