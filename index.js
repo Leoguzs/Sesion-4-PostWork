@@ -2,7 +2,27 @@
 son objetos con las mismas propiedades, en este último caso los valores de las propiedades deben 
 ser comparados con una llamada recursiva de deepEqual.*/
 function deepEqual(a, b) {
-  //código
+  //Identificar si los argumentos son de tipo object
+  if (typeof (a) === 'object' && typeof (b) === 'object') {
+    //Asignarle a las variables las llaves de los parametros
+    let aKey = Object.keys(a);
+    let bKey = Object.keys(b);
+
+    //Revisar si tienen la misma cantidad de claves
+    if (aKey.length !== bKey.length) {
+      return false
+    }
+
+    //Ciclo que recorre las claves si son iguales
+    for (let i = 0; i < aKey.length; i++) {
+      if (!deepEqual(aKey[i], bKey[i])) {
+        return false
+      }
+    } return true;
+  } else if (a === b)
+    return true
+  else
+    return false;
 }
 
 
@@ -20,6 +40,12 @@ var jane = {
 var luca = {
   firstName: 'Luca'
 }
+
+console.log('Test 1:', deepEqual(1, 1)) // true
+console.log('Test 2:', deepEqual(1, '1')) // false
+console.log('Test 3:', deepEqual(john, john)) // true
+console.log('Test 4:', deepEqual(john, { firstName: 'John', lastName: 'Doe' })) // true
+console.log('Test 5:', deepEqual(john, { firstName: 'John' })) // false
 
 
 /*Ej:2 función chunk que recibe un arreglo y un número entero size. La 
@@ -48,7 +74,6 @@ console.log('Test 3:', chunk(data, 3)) // [[1, 2, 3], [4, 5, 6], [7, 8]]
 //     }
 //   };
 //   chunk(oneMoreData, 2)
-
 
 
 /* EJERCICIO 3
