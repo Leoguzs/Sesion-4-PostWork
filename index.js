@@ -41,6 +41,47 @@ function deepEqual(a, b) {
       firstName: 'Luca'
   }
 
+    // Alternativa Deep Equal
+
+  function deepEqual2(a, b) {
+    if (a === b) return true;
+    let clavesA = Object.keys(a), clavesB = Object.keys(b);
+  
+    if (clavesA.length != clavesB.length) return false;
+  
+    for (let clave of clavesA) {
+      if (!clavesB.includes(clave) || !deepEqual2(a[clave], b[clave])) return false;
+    }
+  
+    return true;
+  }
+  
+console.log('Test 1:', deepEqual2(1, 1)) // true
+console.log('Test 2:', deepEqual2(1, '1')) // false
+console.log('Test 3:', deepEqual2(john, john)) // true
+console.log('Test 4:', deepEqual2(john, { firstName: 'John', lastName: 'Doe' })) // true
+console.log('Test 5:', deepEqual2(john, { firstName: 'John' })) // false
+
+
+  function frequency2(string) {
+    const charArray = string.split("").sort();
+    let freqObject = {};
+    for (char of charArray) {
+      if (freqObject[char]) {
+        freqObject[char]++;
+      } else {
+        freqObject[char] = 1;
+      }
+    }
+    return freqObject;
+  };
+  
+  console.log('Test 1:', frequency2('cccbbbaaa'))
+  // {a: 3, b: 3, c: 3}
+  console.log('Test 2:', frequency2('www.bedu.org'))
+  // {.: 2, b: 1, d: 1, e: 1, g: 1, o: 1, r: 1, u: 1, w: 3}
+  console.log('Test 3:', frequency2('john.doe@domain.com'))
+     // {.: 2, @: 1, a: 1, c: 1, d: 2, e: 1, h: 1, i: 1, j: 1, m: 2, n: 2, o: 4}
 
 /*Ej:2 función chunk que recibe un arreglo y un número entero size. La 
 función debe dividir el arreglo en múltiples arreglos del tamaño determinado por size.*/
@@ -90,23 +131,4 @@ return contador;
       
   } 
 
-  // Alternativa Deep Equal
 
-  function deepEqual2(a, b) {
-    if (a === b) return true;
-    let clavesA = Object.keys(a), clavesB = Object.keys(b);
-  
-    if (clavesA.length != clavesB.length) return false;
-  
-    for (let clave of clavesA) {
-      if (!clavesB.includes(clave) || !deepEqual2(a[clave], b[clave])) return false;
-    }
-  
-    return true;
-  }
-  
-console.log('Test 1:', deepEqual2(1, 1)) // true
-console.log('Test 2:', deepEqual2(1, '1')) // false
-console.log('Test 3:', deepEqual2(john, john)) // true
-console.log('Test 4:', deepEqual2(john, { firstName: 'John', lastName: 'Doe' })) // true
-console.log('Test 5:', deepEqual2(john, { firstName: 'John' })) // false
