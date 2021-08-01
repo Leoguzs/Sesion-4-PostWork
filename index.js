@@ -85,6 +85,26 @@ Los resultados deben ordenarse ascendentemente por los caracteres y no la frecue
 */
 
 function frequency(string) {
+  if (typeof string != 'string') {
+    throw TypeError('El argumento debe de ser una cadena de caracteres')
+  }
+  let contador = {}; //literal de diccionario de mapa vacío
+  string.replace(/\S/g, function (w) { //word 
+    contador[w] = (isNaN(contador[w]) ? 1 : contador[w] + 1);
+  });
+  return contador;
+
+}
+
+try {
+  console.log(frequency('Leonidas'));
+} catch (e) {
+  console.log(`Error ${e.message}`)
+
+}
+
+
+function frequency(string) {
   const charArray = string.split("").sort();
   let freqObject = {};
   for (char of charArray) {
