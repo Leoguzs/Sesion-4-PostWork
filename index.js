@@ -59,8 +59,6 @@ El resultado debe mostrarse en un objeto donde las propiedades sean los caracter
 Los resultados deben ordenarse ascendentemente por los caracteres y no la frecuencia.
 */
 
-
-
 function frequency(string) {
   const charArray = string.split("").sort();
   let freqObject = {};
@@ -73,8 +71,6 @@ function frequency(string) {
   }
   return freqObject;
 };
-
-
 
 console.log('Test 1:', frequency('cccbbbaaa'))
 // {a: 3, b: 3, c: 3}
