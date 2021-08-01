@@ -89,3 +89,24 @@ return contador;
     console.log(`Error ${e.message}`)
       
   } 
+
+
+  function frequency2(string) {
+    const charArray = string.split("").sort();
+    let freqObject = {};
+    for (char of charArray) {
+      if (freqObject[char]) {
+        freqObject[char]++;
+      } else {
+        freqObject[char] = 1;
+      }
+    }
+    return freqObject;
+  };
+  
+  console.log('Test 1:', frequency2('cccbbbaaa'))
+  // {a: 3, b: 3, c: 3}
+  console.log('Test 2:', frequency2('www.bedu.org'))
+  // {.: 2, b: 1, d: 1, e: 1, g: 1, o: 1, r: 1, u: 1, w: 3}
+  console.log('Test 3:', frequency2('john.doe@domain.com'))
+     // {.: 2, @: 1, a: 1, c: 1, d: 2, e: 1, h: 1, i: 1, j: 1, m: 2, n: 2, o: 4}
