@@ -89,3 +89,24 @@ return contador;
     console.log(`Error ${e.message}`)
       
   } 
+
+  // Alternativa Deep Equal
+
+  function deepEqual2(a, b) {
+    if (a === b) return true;
+    let clavesA = Object.keys(a), clavesB = Object.keys(b);
+  
+    if (clavesA.length != clavesB.length) return false;
+  
+    for (let clave of clavesA) {
+      if (!clavesB.includes(clave) || !deepEqual2(a[clave], b[clave])) return false;
+    }
+  
+    return true;
+  }
+  
+console.log('Test 1:', deepEqual2(1, 1)) // true
+console.log('Test 2:', deepEqual2(1, '1')) // false
+console.log('Test 3:', deepEqual2(john, john)) // true
+console.log('Test 4:', deepEqual2(john, { firstName: 'John', lastName: 'Doe' })) // true
+console.log('Test 5:', deepEqual2(john, { firstName: 'John' })) // false
