@@ -60,6 +60,29 @@ const data = [1, 2, 3, 4, 5, 6, 7, 8];
 console.log('Test 1:', chunk(data, 1)) // [[1], [2], [3], [4], [5], [6], [7], [8]]
 console.log('Test 2:', chunk(data, 2)) // [[1, 2], [3, 4], [5, 6], [7, 8]]
 console.log('Test 3:', chunk(data, 3)) // [[1, 2, 3], [4, 5, 6], [7, 8]]
+//////////////////////////////////////////////////////////////////////////////////////////////
+//Solucion 2 para Ej:2
+function chunk(array, size) {
+    // Code goes here
+    const newArr = [];
+    
+    for(let i = 0; i < Math.ceil((array.length / size)); ++i){
+        newArr[i] = [];
+        for(let j = 0; j < size; ++j)
+            if(typeof array[size * i + j] !== 'undefined')
+                newArr[i][j] = array[size * i + j];
+    }
+
+    return newArr;
+};
+  
+const data = [1, 2, 3, 4, 5, 6, 7, 8];
+//const data = [4,4,7,4,24,57,3,5,1,6,7,3];
+//const data = [5,3,6,'Hola', 'Arreglo', 4];  
+  
+console.log('Test 1:', chunk(data, 1)); // [[1], [2], [3], [4], [5], [6], [7], [8]]
+console.log('Test 2:', chunk(data, 2)); // [[1, 2], [3, 4], [5, 6], [7, 8]]
+console.log('Test 3:', chunk(data, 3)); // [[1, 2, 3], [4, 5, 6], [7, 8]]
 
 //   let chunk = (arreglo, tamaño)=> {
 //     for (i=0; i<arreglo.length; i += tamaño) {
